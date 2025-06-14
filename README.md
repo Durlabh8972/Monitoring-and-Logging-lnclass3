@@ -1,42 +1,75 @@
-## README - Monolith Analysis App with OpenTelemetry
-## Overview
-This is a Flask-based web application that simulates a dice roll and integrates monitoring and observability features using OpenTelemetry. 
-The application exports tracing and metric data to SigNoz for observability and debugging.
+# 🎲 Monolith Analysis App with OpenTelemetry
 
-## Features
+## 📌 Overview
 
-- Endpoint `/rolldice` (or `/`) to simulate dice rolls
-- OpenTelemetry Tracing and Metrics setup
-- Exception logging for simulated failures
-- Integration with SigNoz (OTLP over HTTP)
+This is a Flask-based web application that simulates a dice roll and demonstrates observability using **OpenTelemetry**. The application exports **tracing and metrics data** to **SigNoz** via OTLP over HTTP for monitoring and debugging.
 
-## Prerequisites
+---
 
-- Python 3.12+
-- Flask
-- opentelemetry-api
-- opentelemetry-sdk
-- opentelemetry-exporter-otlp
-- SigNoz running locally (default endpoint http://localhost:4318)
+## 🚀 Features
 
-## Installation & Setup
+- 🎯 **Dice Roll Simulation** via `/` or `/rolldice` endpoint
+- 📈 **OpenTelemetry Tracing & Metrics** integration
+- ⚠️ **Error Logging** for exception simulation
+- 📡 **SigNoz Integration** using OTLP HTTP exporter
 
-1. Clone the repository.
-2. Install the required dependencies:
-   pip install flask opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp
-3. Ensure SigNoz is running (use Docker or install manually).
-4. Run the Flask application:
-   python app.py
+---
 
-## Usage
+## 🛠️ Prerequisites
 
-- Navigate to http://localhost:3000/ (or /rolldice if that's your route).
-- Optional: Use `?player=name` to simulate a player rolling the dice.
-- Check SigNoz UI (http://localhost:3301) for traces and metrics.
+- Python **3.12+**
+- [SigNoz](https://signoz.io) running locally (default OTLP endpoint: `http://localhost:4318`)
+- Python packages:
+  - `flask`
+  - `opentelemetry-api`
+  - `opentelemetry-sdk`
+  - `opentelemetry-exporter-otlp`
 
-## Testing Exceptions
+---
 
-To simulate an error and test trace exceptions in SigNoz, modify the `roll()` function to:
+## 📦 Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Durlabh8972/Monitoring-and-Logging-lnclass3.git
+   cd Monitoring-and-Logging-lnclass3
+Install dependencies:
+
+bash
+Copy
+Edit
+pip install flask opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp
+Start SigNoz:
+
+Use Docker or follow the SigNoz installation guide
+
+Run the application:
+
+bash
+Copy
+Edit
+python app.py
+🌐 Usage
+Visit: http://localhost:3000/
+
+Optional: Add query parameter ?player=YourName to simulate a player roll:
+
+ruby
+Copy
+Edit
+http://localhost:3000/?player=Durlabh
+Check SigNoz UI to view traces and metrics in real-time.
+
+🧪 Testing Exceptions (Optional)
+To simulate and test error tracking:
+
+Modify the roll() function in app.py:
+
+python
+Copy
+Edit
+def roll():
     raise Exception("Simulated dice roll failure!")
-Then hit the endpoint to trigger the error and view the trace in SigNoz.
+Access the endpoint to trigger an exception.
 
+Check SigNoz for the captured error trace.
